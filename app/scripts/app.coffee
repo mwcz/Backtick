@@ -27,12 +27,16 @@ define [
       @on "open", @setOpen.bind(this)
       @on "close", @setClosed.bind(this)
 
-    start: ->
+    start: (storage) ->
       @appendContainer()
       @trigger "loadConsole.action"
 
       @on "load.commands", @setOpen.bind(this)
-      @on "load.commands sync.commands", (commands) => @commands = commands
+      @on "load.commands sync.commands", (commands) =>
+        if storage?.importedCommands
+          @commands = commands.concat storage?.importedCommands
+        else
+          @commands = commands
 
       @on "execute.commands", @setLoading.bind(this)
       @on "executed.commands executionError.commands", @setLoaded.bind(this)
