@@ -1,5 +1,5 @@
 class License
-  I_AM_A_PIRATE: false
+  I_AM_A_PIRATE: true
   LICENSE_ID: "fdocciflgajbbcgmnfifnmoamjgiefip"
 
   isLicensed: (callback) ->
