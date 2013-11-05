@@ -13,8 +13,6 @@ class Options
     @displayHotkey()
     @setupListeners()
 
-    @initAnalytics()
-
     $.when(@getCommands(), @getCustomCommandIds())
       .then @handleCommands
 
@@ -23,11 +21,6 @@ class Options
   checkLicense: ->
     License.isLicensed (result) =>
       @$licenseSection.addClass(if result then "active" else "inactive")
-
-  initAnalytics: ->
-    window._gaq or= []
-    window._gaq.push ["_setAccount", "UA-45140113-2"]
-    window._gaq.push ["_trackPageview"]
 
   setupListeners: ->
     $(document)

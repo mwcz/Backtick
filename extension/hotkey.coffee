@@ -19,10 +19,7 @@ class Hotkey
     if chrome?.runtime
       chrome.runtime.sendMessage
         event: "toggle.app"
-        data:
-          loaded: window._BACKTICK_LOADED
-          action: 'Hotkey'
-          hotkey: @hotkey
+        data: window._BACKTICK_LOADED
     else
       require ["app"], (App) -> App.trigger "toggle.app"
 
